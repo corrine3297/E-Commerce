@@ -8,27 +8,17 @@ import Badge from 'react-bootstrap/Badge';
 import { Link } from 'react-router-dom';
 import logoImage from '../logo-dark.png';
 import './HeaderSection.css';
-import { getAllCartProducts, getAllWishlistProducts } from '../services/allAPI';
+import { useSelector } from 'react-redux';
 
 function HeaderSection() {
-    const [cartProductlist,setCartProductlist]=useState([])
-    const [wishlistProductlist,setWishlistProductlist]=useState([])
-    const getCartCount= async()=>{
-     const {data}=await getAllCartProducts()
-     setCartProductlist(data)
 
-    }
-
-    const getWishlistCount= async()=>{
-        const {data}=await getAllWishlistProducts()
-        setWishlistProductlist(data)
-    }
-
-    useEffect(()=>{
-        getWishlistCount()
-        getCartCount()
-    },[])
-
+    const cart = useSelector((state) => state.cartReducer)
+    const wishlist = useSelector((state) => state.wishlistReducer)
+    console.log(cart);
+    console.log(wishlist);
+    useEffect(() => { 
+        
+    },[cart,wishlist])
     return (
         <>
             <Navbar expand="lg" className="bg-white shadow p-3">
@@ -40,7 +30,7 @@ function HeaderSection() {
                     </Navbar.Brand>
 
                     {/* d-none d-lg-flex the search input will be hidden on screens smaller than 800px and shown on screens larger than 800px. */}
-                      
+
                     <Form className="d-flex d-none d-lg-flex">
                         <Form.Control
                             type="search"
@@ -57,14 +47,14 @@ function HeaderSection() {
                             <Nav.Link className='btn border rounded d-none d-lg-block'>
                                 <Link to={'/wishlist'} className='d-flex align-item-center' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>
                                     <i className='fa-solid fa-heart text-danger me-2 mt-1'></i>wishlist
-                                    <Badge className='ms-2 rounded' bg='light'>{wishlistProductlist?.length}</Badge>
+                                    <Badge className='ms-2 rounded' bg='light'>{wishlist.length}</Badge>
                                 </Link>
                             </Nav.Link>
                             {/*  */}
                             <Nav.Link className='btn border rounded ms-3 d-none d-lg-block'>
                                 <Link to={'/cart'} className='d-flex align-item-center' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>
                                     <i className='fa-solid fa-cart-shopping text-warning me-2 mt-1'></i>Cart
-                                    <Badge className='ms-2 rounded' bg='light'>{cartProductlist?.length}</Badge>
+                                    <Badge className='ms-2 rounded' bg='light'>{cart.length}</Badge>
                                 </Link>
                             </Nav.Link>
                         </Nav>

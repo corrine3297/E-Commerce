@@ -2,16 +2,21 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { addToCart, addToWishlist, getSingleProduct } from '../services/allAPI'
 import { Button, Col, Row } from 'react-bootstrap'
+import { useDispatch } from 'react-redux';
+import { storeAddToCart } from '../redux/slices/cartSlice';
+import { storeAddToWishlist } from '../redux/slices/wishlistSlice';
 
 function ViewProduct() {
 
   const { id } = useParams()
+  const dispatch = useDispatch();
+
   const [product, setProduct] = useState({})
   const getProductById = async () => {
     const { data } = await getSingleProduct(id)
     data.price = Math.floor(data.originalPrice * (data.discountPercentage / 100))
 
-    console.log(data);
+    // console.log(data);
     setProduct(data)
   }
 
@@ -19,17 +24,19 @@ function ViewProduct() {
     getProductById()
   }, [])
 
-  const addProductToCart = async () => {
-   const cartResponse= await addToCart(product)
-   console.log(cartResponse)
+  const addProductToCart = async (product) => {
+    const cartResponse = await addToCart(product)
+    console.log(cartResponse)
+    dispatch(storeAddToCart(product))
   }
 
-  const addProductToWishlist =async () => {
-    const wishlistResponse= await addToWishlist(product)
+  const addProductToWishlist = async () => {
+    const wishlistResponse = await addToWishlist(product)
     console.log(wishlistResponse)
+    dispatch(storeAddToWishlist(product))
   }
 
-  console.log(id);
+  // console.log(id);
   return (
     <>
       <div className='container mt-5 mb-5'>
@@ -39,8 +46,8 @@ function ViewProduct() {
             <div className='d-flex flex-column'>
               <img src={product?.thumbnail} alt="" />
               <div className='d-flex justify-content-evenly mt-3'>
-                <Button onClick={addProductToCart} className='btn btn-success'>Add to Cart</Button>
-                <Button onClick={addProductToWishlist} className='btn btn-primary'>Add to Wishlist</Button>
+                <Button onClick={() => addProductToCart(product)} className='btn btn-success'>Add to Cart</Button>
+                <Button onClick={() => addProductToWishlist(product)} className='btn btn-primary'>Add to Wishlist</Button>
               </div>
             </div>
           </Col>
@@ -74,7 +81,8 @@ function ViewProduct() {
                 <p className='m-3'>
                   Bank Offer10% Instant Discount on ICICI Bank Credit Card EMI Txns, up to ₹1500, on orders of ₹5000 and aboveT&C
 
-                </p>            </div>
+                </p>
+              </div>
             </div>
           </Col>
         </Row>
@@ -84,3 +92,4 @@ function ViewProduct() {
 }
 
 export default ViewProduct
+// export {addProductToCart,addProductToWishlist}

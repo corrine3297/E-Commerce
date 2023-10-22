@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import './Home.css'
 import { getAllProducts } from '../services/allAPI';
 import { Link } from 'react-router-dom';
+import LandingImage from './Landing_hero-image-1-1.png'
 
 
 function Home() {
@@ -31,6 +32,28 @@ function Home() {
 
             <div className='homeContainer'>
                 <Row>
+                    <Col sm={12} md={6} lg={6} xl={6}>
+                        <div className='landingContent'>
+                            <div className='landingTitle'>
+                                Styles Accessories & New Gadgets
+                            </div>
+                            <div className='landingParagraph'>
+                                Nam vel augue sit amet ligula tincidunt blandit sed sed neque. Morbi vulputate augue malesuada
+                                mi viverra blandit.
+                            </div>
+                            <div className='landingButton'>
+                                shop now
+                            </div>
+
+                        </div>
+                    </Col>
+                    <Col sm={12} md={6} lg={6} xl={6}>
+                        <div>
+                            <img width={'550px'} src={LandingImage} alt="" />
+                        </div>
+                    </Col>
+                </Row>
+                <Row className='mt-5'>
                     {allProducts?.length > 0 ? allProducts.map((product) => (
 
 
