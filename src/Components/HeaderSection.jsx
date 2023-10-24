@@ -14,11 +14,9 @@ function HeaderSection() {
 
     const cart = useSelector((state) => state.cartReducer)
     const wishlist = useSelector((state) => state.wishlistReducer)
-    console.log(cart);
-    console.log(wishlist);
-    useEffect(() => { 
-        
-    },[cart,wishlist])
+    useEffect(() => {
+    }, [cart, wishlist])
+    
     return (
         <>
             <Navbar expand="lg" className="bg-white shadow p-3">

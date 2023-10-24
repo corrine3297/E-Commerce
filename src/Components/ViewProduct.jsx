@@ -15,8 +15,6 @@ function ViewProduct() {
   const getProductById = async () => {
     const { data } = await getSingleProduct(id)
     data.price = Math.floor(data.originalPrice * (data.discountPercentage / 100))
-
-    // console.log(data);
     setProduct(data)
   }
 
@@ -26,13 +24,11 @@ function ViewProduct() {
 
   const addProductToCart = async (product) => {
     const cartResponse = await addToCart(product)
-    console.log(cartResponse)
     dispatch(storeAddToCart(product))
   }
 
   const addProductToWishlist = async () => {
     const wishlistResponse = await addToWishlist(product)
-    console.log(wishlistResponse)
     dispatch(storeAddToWishlist(product))
   }
 

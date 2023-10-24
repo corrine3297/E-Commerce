@@ -1,52 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { useEffect } from "react";
 import { getAllCartProducts } from "../../services/allAPI";
 
-let value
-
-// const fetchdata = (url) => {
-//     const [data, setData] = useState(null)
-//     useEffect(() => {
-//         fetch(url).then(res => {
-//             // console.log(res)
-//             res.json().then(result => {
-//                 // console.log(result)
-//                 setData(result.products)
-//             })
-//         })
-//     }, [url])
-//     return data
-// }
-
-// fetchdata('https://dummyjson.com/carts')
-// console.log(data);
- const fetchCartData = async () => {
-    const {data} = await getAllCartProducts();
-    // const data = await response.json();
-    console.log(data);
-
+const fetchCartData = async () => {
+    const { data } = await getAllCartProducts();
     return data;
-  };
-  const cartproducts=fetchCartData().then(res=>{
-    console.log(res)
-  })
-  
- console.log(cartproducts)
-  
+};
+
+const cartproducts = await fetchCartData()
 
 const cartSlice = createSlice({
     name: 'cart',
-    initialState: {
-        data: [],
-        status: 'idle',
-        error: null,
-      },
+    initialState: [...cartproducts],
     reducers: {
         storeAddToCart: (state, action) => {
-            state.data.push(action.payload)
+            state.push(action.payload)
+        },
+        storeDeleteToCart: (state, action) => {
+            state.pop()
         }
     }
 })
 
-export const { storeAddToCart } = cartSlice.actions
+export const { storeAddToCart, storeDeleteToCart } = cartSlice.actions
 export default cartSlice.reducer

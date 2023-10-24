@@ -33,4 +33,12 @@ export const getAllWishlistProducts = async () => {
     return await commonAPI("GET", `${serverURL}/wishlists`, "")
 }
 
+export const deleteCartProduct = async (id) => {
+    return await commonAPI("DELETE", `${serverURL}/carts/${id}`, {})
+}
+
+export const deleteWishlistProduct = async (id) => {
+    return await commonAPI("DELETE", `${serverURL}/wishlists/${id}`, {})
+}
+
 
