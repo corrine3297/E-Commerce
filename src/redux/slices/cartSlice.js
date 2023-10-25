@@ -16,7 +16,7 @@ const cartSlice = createSlice({
             state.push(action.payload)
         },
         storeDeleteToCart: (state, action) => {
-            state.pop()
+           return state.filter((item)=>item.id!=action.payload)
         }
     }
 })

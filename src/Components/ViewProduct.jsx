@@ -5,6 +5,8 @@ import { Button, Col, Row } from 'react-bootstrap'
 import { useDispatch } from 'react-redux';
 import { storeAddToCart } from '../redux/slices/cartSlice';
 import { storeAddToWishlist } from '../redux/slices/wishlistSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ViewProduct() {
 
@@ -24,12 +26,25 @@ function ViewProduct() {
 
   const addProductToCart = async (product) => {
     const cartResponse = await addToCart(product)
-    dispatch(storeAddToCart(product))
+    if (cartResponse.status >= 200 && cartResponse.status < 300) {
+      dispatch(storeAddToCart(product))
+      toast.success(`Product moved to cart`)
+    }
+    else {
+      toast.warning(`Product already in the cart`)
+    }
+
   }
 
   const addProductToWishlist = async () => {
     const wishlistResponse = await addToWishlist(product)
-    dispatch(storeAddToWishlist(product))
+    if (wishlistResponse.status >= 200 && wishlistResponse.status < 300) {
+      dispatch(storeAddToWishlist(product))
+      toast.success(`Product moved to wishlist`)
+    } else {
+      toast.warning(`Product already in the wishlist`)
+    }
+
   }
 
   // console.log(id);
@@ -83,6 +98,7 @@ function ViewProduct() {
           </Col>
         </Row>
       </div>
+      <ToastContainer position='top-center' theme='colored' autoClose={2000} />
     </>
   )
 }

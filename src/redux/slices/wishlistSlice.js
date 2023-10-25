@@ -16,11 +16,7 @@ const wishlistSlice = createSlice({
             state.push(action.payload)
         },
         storeDeleteFromWishlist:(state,action)=>{
-            const deleteSingleProduct = async () => {
-            const response = await deleteWishlistProduct(action.payload)}
-        
-            deleteSingleProduct()
-            fetchWishlistProduct()
+            return state.filter((item=>item.id!=action.payload))
         }
     }
 
