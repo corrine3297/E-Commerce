@@ -1,0 +1,10 @@
+.footerContainer{
+    padding: 50px 50px;
+    background-color: whitesmoke;
+}
+.section-left div{
+    padding: 10px;
+}
+.section-list li{
+    margin-bottom: 10px;
+}
