@@ -1,6 +1,6 @@
-.homeContainer{
+.homeContainer {
     padding: 50px 50px;
-    background-color: white;
+    background-color: lavenderblush;
 }
 
 .landingTitle {
@@ -44,3 +44,45 @@
 
 }
 
+.product-card {
+    height: 450px;
+    padding: 10px 10px;
+    background-color: ghostwhite !important;
+    border-color: ghostwhite !important;
+}
+
+.font-style {
+    font-weight: 600
+}
+
+.landing-img {
+    width: 550px
+}
+
+/* sizing */
+@media (max-width:800px) {
+    .landingSection {
+        flex-wrap: wrap;
+    }
+
+    .productBannerSection {
+        flex-wrap: wrap;
+    }
+
+    .landingImage {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .landing-img {
+        width: 400px;
+    }
+
+     .product-col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

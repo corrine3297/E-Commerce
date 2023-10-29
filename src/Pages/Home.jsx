@@ -41,34 +41,36 @@ function Home() {
                         </div>
                     </Col>
                     <Col sm={12} md={6} lg={6} xl={6}>
-                        <div>
-                            <img width={'550px'} src={LandingImage} alt="" />
+                        <div className='landingImage'>
+                            <img className='landing-img' src={LandingImage} alt="" />
                         </div>
                     </Col>
                 </Row>
                 <Row className='mt-5'>
                     {filteredProducts?.length > 0 ? filteredProducts.map((product) => (
-                        <Col sm={12} md={6} lg={4} xl={3} className='mb-4'>
-                            <Card style={{ width: '15rem', height: '22rem' }}>
-                                <Link to={`/products/${product?.id}`}> <Card.Img variant="top" height={'150px'} src={product?.thumbnail} /></Link>
+                        <Col sm={12} md={6} lg={4} xl={3} className='mb-4 product-col'>
+                            <Card className='product-card shadow' style={{ width: '300px',paddingBottom:'20px',borderRadius:'20px' }}>
+                                <Link to={`/products/${product?.id}`}> <Card.Img variant="top" style={{ overflowY: 'hidden',borderRadius:'20px'}}  height={'286.094px'} width={'300px'} src={product?.thumbnail} /></Link>
                                 <Card.Body>
                                     <div>{product?.brand}</div>
-                                    <Card.Title style={{ overflowY: 'hidden' }}>{product?.title.slice(0,30)}</Card.Title>
-                                    <div>$ {product?.price} <span style={{ textDecoration: 'line-through' }}> $ {product?.originalPrice}</span> {Math.floor(product?.discountPercentage)} % off</div>
+                                    <Card.Title style={{ overflowY: 'hidden' }}>{product?.title.slice(0,20)}</Card.Title>
+                                    <div className='font-style'><span style={{color:'#e52e06'}}> $ {product?.price} USD</span><span style={{ textDecoration: 'line-through' }}> $ {product?.originalPrice}</span> {Math.floor(product?.discountPercentage)}% off</div>
                                 </Card.Body>
                             </Card>
                         </Col>               
                     ))
                         : allProducts?.length > 0 ? allProducts.map((product) => (
-                            <Col sm={12} md={6} lg={4} xl={3} className='mb-4'>
-                            <Card style={{ width: '15rem', height: '22rem' }}>
-                                <Link to={`/products/${product?.id}`}> <Card.Img variant="top" height={'150px'} src={product?.thumbnail} /></Link>
+                            <Col sm={12} md={6} lg={4} xl={3} className='mb-4 product-col'>
+                            
+                            <Card className='product-card shadow' style={{ width: '300px',paddingBottom:'20px',borderRadius:'20px' }}>
+                                <Link to={`/products/${product?.id}`}> <Card.Img variant="top" style={{ overflowY: 'hidden',borderRadius:'20px'}} height={'286.094px'} width={'300px'} src={product?.thumbnail} /></Link>
                                 <Card.Body>
                                     <div>{product?.brand}</div>
-                                    <Card.Title style={{ overflowY: 'hidden' }}>{product?.title.slice(0,30)}</Card.Title>
-                                    <div>$ {product?.price} <span style={{ textDecoration: 'line-through' }}> $ {product?.originalPrice}</span> {Math.floor(product?.discountPercentage)} % off</div>
+                                    <Card.Title style={{ overflowY: 'hidden' }}>{product?.title.slice(0,20)}</Card.Title>
+                                    <div className='font-style'> <span style={{color:'#e52e06'}}>$ {product?.price} USD</span> <span style={{ textDecoration: 'line-through' }}> $ {product?.originalPrice}</span> {Math.floor(product?.discountPercentage)}% off</div>
                                 </Card.Body>
                             </Card>
+                            
                         </Col>
                         
                     )):<p> content nothing to display</p>

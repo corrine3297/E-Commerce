@@ -1,0 +1,15 @@
+.thumbnail-img{
+    height: 400px !important;
+    width:546px !important;
+}
+
+.product-title,.product-price{
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.button-color{
+    background-color: #e52e06 !important;
+    border: 1px solid #e52e06 !important;
+    padding: 15px !important;
+}

@@ -7,6 +7,7 @@ import { storeAddToCart } from '../redux/slices/cartSlice';
 import { storeAddToWishlist } from '../redux/slices/wishlistSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './ViewProduct.css'
 
 function ViewProduct() {
 
@@ -55,19 +56,19 @@ function ViewProduct() {
           <Col sm={12} md={6} lg={6} xl={6}
           >
             <div className='d-flex flex-column'>
-              <img src={product?.thumbnail} alt="" />
+              <img src={product?.thumbnail} alt="" className='thumbnail-img'  />
               <div className='d-flex justify-content-evenly mt-3'>
-                <Button onClick={() => addProductToCart(product)} className='btn btn-success'>Add to Cart</Button>
-                <Button onClick={() => addProductToWishlist(product)} className='btn btn-primary'>Add to Wishlist</Button>
+                <Button onClick={() => addProductToCart(product)} className='btn button-color'>Add to Cart</Button>
+                <Button onClick={() => addProductToWishlist(product)} className='btn button-color'>Add to Wishlist</Button>
               </div>
             </div>
           </Col>
           <Col sm={12} md={6} lg={6} xl={6}
           >
             <div>
-              <div className='m-3'>{product?.brand}</div>
+              <h2 className='m-3 product-title'>{product?.brand}</h2>
               <div className='m-3'>{product?.title}</div>
-              <div className='m-3'>$ {product?.price} <span style={{ textDecoration: 'line-through' }}> $ {product?.originalPrice}</span> {Math.floor(product?.discountPercentage)} % off</div>
+              <h3 className='m-3 product-price'> <span style={{color:'#e52e06'}}>$ {product?.price} USD </span> <span style={{ textDecoration: 'line-through' }}> $ {product?.originalPrice}</span> {Math.floor(product?.discountPercentage)}% off</h3>
               <div className='m-3'>Rating {product?.rating} <i class="fa-solid fa-star" style={{ color: '#42c91d' }}></i></div>
               <div className='d-flex flex-column mt-3'>
                 <p className='m-3'>
