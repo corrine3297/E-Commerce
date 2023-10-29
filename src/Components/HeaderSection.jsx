@@ -31,14 +31,14 @@ function HeaderSection() {
 
     const searchSubmit = () => {
         if (searchValue) {
-            dispatch(filterProducts(searchValue))  
-            setSearchValue("")  
+            dispatch(filterProducts(searchValue))
+            setSearchValue("")
         }
         else {
             toast.warning(`Please insert a value`)
         }
         // console.log(searchValue);
-        
+
     }
 
     useEffect(() => {
@@ -47,39 +47,41 @@ function HeaderSection() {
 
     return (
         <>
-            <Navbar expand="lg" className="shadow p-3">
-                <Container style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Navbar.Brand href="#home">
+            <Navbar expand="lg" className="bg-body-light shadow">
+                <Container  style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <Navbar.Brand>
                         <Link to={'/'} style={{ textDecoration: 'none' }}>
                             <img width={'165px'} height={'38px'} src={logoImage} alt="" />
                         </Link>
                     </Navbar.Brand>
 
-                    {/* d-none d-lg-flex the search input will be hidden on screens smaller than 800px and shown on screens larger than 800px. */}
-
-                    <Form className="d-flex d-none d-lg-flex">
-                        <Form.Control
-                            type="search"
-                            value={searchValue}
-                            placeholder="Search"
-                            className="me-2"
-                            aria-label="Search"
-                            onChange={getSearchValue}
-                            style={{ width: '400px' }}
-                        />
-                        <Button onClick={searchSubmit} className='btn btn-light'><i class="mt-1 fa-solid fa-magnifying-glass"></i></Button>
-                    </Form>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse className='navbar-collapse' id="basic-navbar-nav" style={{ flexGrow: '0', justifyContent: 'space-between' }}>
-                        <Nav className="ms-auto"> {/* Align items to the right */}
-                            <Nav.Link className='btn border rounded d-none d-lg-block'>
+                    <Navbar.Collapse id="basic-navbar-nav" className='option-list'>
+
+                        <Nav className="me-auto">
+
+
+                            <Form className="d-flex search-field">
+                                <Form.Control
+                                    type="search"
+                                    value={searchValue}
+                                    placeholder="Search"
+                                    className="me-2"
+                                    aria-label="Search"
+                                    onChange={getSearchValue}
+                                    style={{ width: '400px' }}
+                                />
+                                <Button onClick={searchSubmit} className='btn btn-light'><i class="mt-1 fa-solid fa-magnifying-glass"></i></Button>
+                            </Form>
+
+                            <Nav.Link className='btn border rounded link-style'>
                                 <Link to={'/wishlist'} className='d-flex align-item-center' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>
                                     <i className='fa-solid fa-heart text-danger me-2 mt-1'></i>wishlist
                                     <Badge className='ms-2 rounded' bg='light'>{wishlist.length}</Badge>
                                 </Link>
                             </Nav.Link>
-                            {/*  */}
-                            <Nav.Link className='btn border rounded ms-3 d-none d-lg-block'>
+
+                            <Nav.Link className='btn border rounded link-style'>
                                 <Link to={'/cart'} className='d-flex align-item-center' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>
                                     <i className='fa-solid fa-cart-shopping text-warning me-2 mt-1'></i>Cart
                                     <Badge className='ms-2 rounded' bg='light'>{cart.length}</Badge>
