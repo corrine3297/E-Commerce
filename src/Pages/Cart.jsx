@@ -47,15 +47,16 @@ function Cart() {
 
         {cartArray?.length > 0 ? (
           <Row className='mt-5' >
-            <Col className='d-flex flex-wrap' sm={12} md={8} lg={9} xl={8} >
+            <Col className='d-flex flex-wrap product-col' sm={12} md={8} lg={9} xl={8} >
+              
               {cartArray.map((cart) => (
-                <Card className='m-2' style={{ width: '15rem', height: '22rem' }}>
-                  <Link to={`/products/${cart?.id}`}> <Card.Img variant="top" height={'150px'} src={cart?.thumbnail} /></Link>
+                <Card className='m-2 product-card shadow' style={{ width: '300px',paddingBottom:'20px',borderRadius:'20px' }}>
+                  <Link to={`/products/${cart?.id}`}> <Card.Img variant="top" style={{ overflowY: 'hidden',borderRadius:'20px'}} height={'286.094px'} width={'300px'} src={cart?.thumbnail} /></Link>
                   <Card.Body>
                     <div>{cart?.brand}</div>
-                    <Card.Title style={{ overflowY: 'hidden' }}>{cart?.title}</Card.Title>
-                    <div>$ {cart?.price} <span style={{ textDecoration: 'line-through' }}> $ {cart?.originalPrice}</span> {Math.floor(cart?.discountPercentage)} % off</div>
-                    <Button onClick={() => deleteSingleProduct(cart?.id)} className='btn btn-light'><i class="fa-solid fa-trash fa-2x text-danger"></i></Button>
+                    <Card.Title style={{ overflowY: 'hidden' }}>{cart?.title.slice(0,20)}</Card.Title>
+                    <div className='font-style'> <span style={{color:'#e52e06'}}>$ {cart?.price} </span><span style={{ textDecoration: 'line-through' }}> $ {cart?.originalPrice}</span> {Math.floor(cart?.discountPercentage)}% off
+                    <Button onClick={() => deleteSingleProduct(cart?.id)} className='btn btn-light ms-3'><i class="fa-solid fa-trash fa-2x text-danger"></i></Button></div>
                   </Card.Body>
                 </Card>
               ))}
@@ -64,11 +65,11 @@ function Cart() {
 
             <Col className='' sm={12} md={4} lg={3} xl={4}>
               <div className='border p-3 rounded shadow'>
-                <h3 style={{ overflowY: 'hidden' }}>Cart summary</h3>
-                <h6 style={{ overflowY: 'hidden' }}>Total product: <span>{cartArray.length}</span></h6>
-                <h6 style={{ overflowY: 'hidden' }}>Total: $ <span>{total}</span></h6>
+                <h3 style={{ overflowY: 'hidden' }}>Cart Summary</h3>
+                <h6 style={{ overflowY: 'hidden' }}>Total Product: <span>{cartArray.length}</span></h6>
+                <h6 style={{ overflowY: 'hidden' }}>Total: $ <span>{total}</span> USD</h6>
 
-                <button className='btn btn-success rounded'>checkout</button>
+                {/* <button className='btn btn-success rounded'>checkout</button> */}
               </div>
             </Col>
           </Row>

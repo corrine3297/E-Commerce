@@ -8,6 +8,7 @@ import { storeDeleteFromWishlist } from '../redux/slices/wishlistSlice';
 import { storeAddToCart } from '../redux/slices/cartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './Wishlist.css'
 
 
 function Wishlist() {
@@ -47,19 +48,19 @@ function Wishlist() {
 
   return (
     <>
-      <div className='cartContainer'>
+      <div className='wishlistContainer'>
 
         {wishlistArray?.length > 0 ? (
           <Row className='mt-5' >
             {wishlistArray.map((wishlist) => (
-              <Col className='d-flex' sm={12} md={6} lg={4} xl={3} >
+              <Col className='d-flex product-col' sm={12} md={6} lg={4} xl={3} >
 
-                <Card className='m-2' style={{ width: '15rem', height: '22rem' }}>
-                  <Link to={`/products/${wishlist?.id}`}> <Card.Img variant="top" height={'150px'} src={wishlist?.thumbnail} /></Link>
+                <Card className='m-2 product-card shadow' style={{ width: '300px',paddingBottom:'20px',borderRadius:'20px' }}>
+                  <Link to={`/products/${wishlist?.id}`}> <Card.Img variant="top" style={{ overflowY: 'hidden',borderRadius:'20px'}} height={'286.094px'} width={'300px'} src={wishlist?.thumbnail} /></Link>
                   <Card.Body>
                     <div>{wishlist?.brand}</div>
-                    <Card.Title style={{ overflowY: 'hidden' }}>{wishlist?.title}</Card.Title>
-                    <div>$ {wishlist?.price} <span style={{ textDecoration: 'line-through' }}> $ {wishlist?.originalPrice}</span> {Math.floor(wishlist?.discountPercentage)} % off</div>
+                    <Card.Title style={{ overflowY: 'hidden' }}>{wishlist?.title.slice(0,20)}</Card.Title>
+                    <div className='font-style'> <span style={{color:'#e52e06'}}> $ {wishlist?.price} USD</span> <span style={{ textDecoration: 'line-through' }}> $ {wishlist?.originalPrice}</span> {Math.floor(wishlist?.discountPercentage)}% off</div>
                     <div className='d-flex justify-content-between'>
 
                       <Button onClick={() => addToCartFromWishlist(wishlist)} className='btn btn-light' ><i className="fa-solid fa-cart-shopping text-warning fa-2x"></i></Button>
@@ -74,7 +75,7 @@ function Wishlist() {
           </Row>
 
         ) : (
-          <div className='container d-flex justify-content-center align-items-center flex-column'>
+          <div className='container d-flex justify-content-center align-items-center flex-column mt-5 mb-5'>
             <img
               src="https://media.giphy.com/media/U8MXoKqFlTtfsOYrnl/giphy.gif"
               alt="empty wish list image"

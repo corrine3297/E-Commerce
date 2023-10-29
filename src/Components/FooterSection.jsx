@@ -7,7 +7,7 @@ function FooterSection() {
         <>
             <div className='footerContainer'>
                 <Row>
-                    <Col sm={12} md={6} lg={4} xl={3} className='d-flex flex-column section-left p-3'>
+                    <Col sm={12} md={6} lg={4} xl={3} data-aos="fade-right" className='d-flex flex-column section-left p-3'>
                         <div>
                             <i className="fa-solid fa-phone me-3"></i>
                             +00 123 456 789
@@ -31,7 +31,7 @@ function FooterSection() {
                         </div>
                     </Col>
 
-                    <Col sm={12} md={6} lg={4} xl={3} className='d-flex flex-column p-3'>
+                    <Col sm={12} md={6} lg={4} xl={3} data-aos="fade-right" className='d-flex flex-column p-3'>
                         <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>
                             Links
                         </div>
@@ -44,7 +44,7 @@ function FooterSection() {
                             <li> Contact Us</li>
                         </ul>
                     </Col>
-                    <Col sm={12} md={6} lg={4} xl={3} className='d-flex flex-column p-3'>
+                    <Col sm={12} md={6} lg={4} xl={3} data-aos="fade-right" className='d-flex flex-column p-3'>
                         <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>
                             Links
                         </div>
@@ -57,7 +57,7 @@ function FooterSection() {
                             <li> Contact Us</li>
                         </ul>
                     </Col>
-                    <Col sm={12} md={6} lg={4} xl={3} className='d-flex flex-column p-3'>
+                    <Col sm={12} md={6} lg={4} xl={3} data-aos="fade-right" className='d-flex flex-column p-3'>
                         <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>
                             Links
                         </div>

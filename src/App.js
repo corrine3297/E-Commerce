@@ -6,9 +6,15 @@ import Home from './Pages/Home';
 import Cart from './Pages/Cart';
 import Wishlist from './Pages/Wishlist';
 import ViewProduct from './Components/ViewProduct';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import AOS from "aos";
 
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    })
+  }, []);
 
   const[ cartResponse, setCartResponse]=useState({})
   const[ wishlistResponse,setWishlistResponse]=useState({})

@@ -27,21 +27,21 @@ function Home() {
                 <Row>
                     <Col sm={12} md={6} lg={6} xl={6}>
                         <div className='landingContent'>
-                            <div className='landingTitle'>
+                            <div data-aos="fade-right" className='landingTitle'>
                                 Styles Accessories & New Gadgets
                             </div>
-                            <div className='landingParagraph'>
+                            <div  data-aos="fade-right" className='landingParagraph'>
                                 Nam vel augue sit amet ligula tincidunt blandit sed sed neque. Morbi vulputate augue malesuada
                                 mi viverra blandit.
                             </div>
-                            <div className='landingButton'>
+                            <div data-aos="fade-right" className='landingButton'>
                                 shop now
                             </div>
 
                         </div>
                     </Col>
                     <Col sm={12} md={6} lg={6} xl={6}>
-                        <div className='landingImage'>
+                        <div data-aos="fade-right" className='landingImage'>
                             <img className='landing-img' src={LandingImage} alt="" />
                         </div>
                     </Col>
